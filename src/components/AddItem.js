@@ -2,19 +2,18 @@ import React from 'react';
 // Props received: addItem, products
 class AddItem extends React.Component {
   state = {
-    product: {
-      id: undefined,
-      name: '',
-      priceInCents: 0
-    },
-    quantity: 0
+    product: {},
+    quantity: ''
   };
   render() {
     return (
       <div>
         <form method="post" onSubmit={this.handleSubmit}>
           <label htmlFor="quantity">Quantity</label> <br />
-          <input type="text" name="quantity" onChange={this.handleQuantity} />
+          <input 
+          type="text" 
+          name="quantity" 
+          onChange={this.handleQuantity} />
           <br />
           <label htmlFor="products">Products</label>
           <br />
@@ -23,7 +22,7 @@ class AddItem extends React.Component {
             name="name"
             onChange={this.handleSelection}
           >
-            <option value="">Select an option...</option>
+            <option selected value="">Select an option...</option>
             {this.props.products.map(product => (
               <option key={product.id} value={product.id}>{product.name}</option>
             ))}}
@@ -52,12 +51,7 @@ class AddItem extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.addItem({ id: Date.now(), ...this.state});
-    // console.log(this.state)
   };
 }
-  
-
-
-{/* } */}
 
 export default AddItem;

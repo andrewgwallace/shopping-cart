@@ -24,20 +24,31 @@ class App extends Component {
       { id: 3, product: { id: 42, name: 'Intelligent Paper Knife', priceInCents: 1999 }, quantity: 1 },
     ]
   }
-
   render() {
-
     return <div className="App">
         <CartHeader />
-        <CartItems myStuff={this.state.cartItemsList} products={this.state.products} addItem={this.addProduct}/>
+        <CartItems 
+        myStuff={this.state.cartItemsList}
+        products={this.state.products} 
+        addItem={this.addProduct}
+        />
+        {/* <div>
+          <span>
+          {this.state.cartItemsList.reduce((total, item) => {
+              return ((item.product.priceInCents/100)*item.quantity + total)
+          },0)}
+          </span>
+        </div> */}
         <CartFooter />
       </div>;
   }
   addProduct = addedProduct => {
-    console.log("Add product:", addedProduct);
     this.setState(prevState => ({
       cartItemsList: [...prevState.cartItemsList, addedProduct]
     }))
+  }
+  calculateTotal = () => {
+
   }
 }
 

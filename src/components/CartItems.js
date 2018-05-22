@@ -17,6 +17,13 @@ const CartItems = ({myStuff, products, addItem}) => {
         </div>
         
         {myStuff.map(item => <CartItem key={item.id} item={item} />)}
+      <div>
+        <span>{`Total Price: $`}
+          {myStuff.reduce((total, item) => {
+            return ((item.product.priceInCents / 100) * item.quantity + total)
+          }, 0)}
+        </span>
+      </div>
         <AddItem products={products} addItem={addItem}/>
       </div>
     </div>;
