@@ -1,11 +1,11 @@
 import React from 'react';
 import CartItem from './CartItem';
+import AddItem from './AddItem';
 
 
 
-const CartItems = ({stuff}) => {
-  return (
-    <div className="container">
+const CartItems = ({myStuff, products, addItem}) => {
+  return <div className="container">
       <h1>Cart Items</h1>
       <div className="list-group">
         <div className="list-group-item">
@@ -15,10 +15,11 @@ const CartItems = ({stuff}) => {
             <div className="col-md-2">Quantity</div>
           </div>
         </div>
-        {stuff.map(item => <CartItem key={item.id} item={ item } />)}
+        
+        {myStuff.map(item => <CartItem key={item.id} item={item} />)}
+        <AddItem products={products} addItem={addItem}/>
       </div>
-    </div>
-  )
+    </div>;
 }
 
 export default CartItems;
